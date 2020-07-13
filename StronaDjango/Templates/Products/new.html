@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--<form method="POST"> {% csrf_token %}-->
+<!--    {{form.as_p}}-->
+<!--    <input type="submit" value="Save">-->
+<!--</form>-->
+<!--<form action="" method="POST">{% csrf_token %}-->
+<!--    <input type="text" name="Short Description">-->
+<!--    <input type="submit" value="Save">-->
+<!--</form>-->
+
+<div class="row my-1 mx-1">
+    <div class="col-4">
+        <form action="" method="POST">{% csrf_token %}
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Short Description</label>
+                <input name="Short Description" type="text" class="form-control" id="exampleFormControlInput1"
+                       placeholder="Please enter short description">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea name="Description" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                          placeholder="Please enter short description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Price</label>
+                <input name="Price" type="number" class="form-control" id="exampleFormControlInput2"
+                       placeholder="Example 19.99">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Quantity</label>
+                <input name="Quantity" type="number" class="form-control" id="exampleFormControlInput3"
+                       placeholder="Please enter quantity">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Barcode</label>
+                <input name="Barcode" type="number" class="form-control" id="exampleFormControlInput4"
+                       placeholder="Please enter barcode">
+            </div>
+            <input type="submit" value="Save" class="btn btn-dark">
+        </form>
+    </div>
+</div>
+{% endblock %}
