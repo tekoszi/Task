@@ -1,0 +1,4 @@
+scipy
+django
+bootstrap4
+django-bootstrap4

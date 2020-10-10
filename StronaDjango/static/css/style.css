@@ -1,2 +1,25 @@
-body{background-color: #222222;}
-a{background-color: #343A40;}
+body{
+    background-color: #222222;
+    color: white;
+}
+a{
+    background-color: #343A40;
+    border-radius: 0.25rem;
+}
+textarea{
+    background-color: #343A40;
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: #343A40;
+
+}
+.dropdown-menu a{
+    background-color: #343A40;
+}
+button{
+    width: 100%;
+    border-radius: 0.25rem;
+}
+

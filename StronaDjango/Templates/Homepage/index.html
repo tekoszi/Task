@@ -1,5 +1,65 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-   <p>This is a homepage!</p>
+<p>Select a file to verify if data inside obeys Benford's law</p>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" required name="myfile">
+    <button type="submit" class="col-1 btn btn-dark">Upload</button>
+  </form>
+
+  {% if success %}
+    <div class="alert alert-success col-5 mt-5" role="alert">{{ success }}<br>Power divergence is: {{powerDivergence}}%<br>Check About page for more info</div>
+  {% endif %}
+  {% if failure %}
+    <div class="alert alert-danger col-5 mt-5" role="alert">{{ failure }}<br>Power divergence is: {{powerDivergence}}%<br>Check About page for more info</div>
+  {% endif %}
+  {% if targetColumnMissing %}
+    <div class="alert alert-danger col-5 mt-5" role="alert">There is no 7_2009 column in file provided</div>
+  {% endif %}
+  <canvas id="canvas" class="col-9"></canvas>
+  <script>
+        var data = {
+          labels: [1,2,3,4,5,6,7,8,9],
+          datasets: [{
+              label: "Real Values",
+              backgroundColor: 'rgba(0, 0, 0, 1)',
+              data: {{ realValues }},
+              xAxisID: "bar-x-axis1",
+            },
+            {
+              label: "Expected Values",
+              backgroundColor: 'rgba(255, 255, 255, 1)',
+              data: {{expectedValues}},
+              xAxisID: "bar-x-axis2"
+            }
+          ]
+        };
+
+        var options = {
+          scales: {
+            xAxes: [{
+                id: "bar-x-axis2",
+                barThickness: 30,
+              },
+              {
+                display: false,
+                offset: true,
+                barThickness: 15,
+                id: "bar-x-axis1",
+              }
+            ]
+
+          }
+        };
+
+        var ctx = document.getElementById("canvas").getContext("2d");
+        var myBarChart = new Chart(ctx, {
+          type: 'bar',
+          data: data,
+          options: options
+        });
+  </script>
 {% endblock %}

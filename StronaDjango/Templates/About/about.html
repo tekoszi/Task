@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<h1>About</h1>
+<p>This page was written by Dominik, it allows you to verify if your data obey Benford's law.</p>
+<br>
+<h6>Instructions:</h6>
+<ul>
+  <li>Select a text file containing numeric data within 7_2009 column.</li>
+  <li>Application will analyze the data and provide you with an verdict and a graph.</li>
+  <li>For data to by classified as obeying Benford's Law it has to score at least 95% pvalue in Chi&sup2; test.</li>
+</ul>
+
+{% endblock %}
